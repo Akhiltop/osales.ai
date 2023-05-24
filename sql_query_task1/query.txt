@@ -1,0 +1,1 @@
+select monthdata.name as DEPT_NAME,round(avg(sup),0) as `AVG_MONTHLY_SALARY (USD)` from (select d.name,s.`month (yyyymm)`,(sum(`amt (usd)`)) sup from departments d inner join employees e on d.id=e.`dept id` inner join salaries s on e.id=s.emp_id group by d.name,s.`month (yyyymm)`) monthdata group by monthdata.name;
